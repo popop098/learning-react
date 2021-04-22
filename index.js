@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://learn:6RqI6rHIveMUbC9o@cluster0.yqosz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{
+require('dotenv').config()
+mongoose.connect(process.env.mongoURL,{
     useNewUrlParser:true,useUnifiedTopology:true,useCreateIndex:true,useFindAndModify:false
 }).then(()=>console.log('몽고DB연결완료.')).catch(err=>console.log(err))
 app.get('/', (req, res) => {
